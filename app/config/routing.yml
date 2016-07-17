@@ -1,0 +1,5 @@
+shop:
+    resource: "@ShopBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
