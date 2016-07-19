@@ -834,12 +834,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dumplie/dumplie.git",
-                "reference": "974171acb9c10b2eb50d3fc2b8c6256ac8899c97"
+                "reference": "0b6273e4659ef17b6b98633b74b2db253a7820c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dumplie/dumplie/zipball/974171acb9c10b2eb50d3fc2b8c6256ac8899c97",
-                "reference": "974171acb9c10b2eb50d3fc2b8c6256ac8899c97",
+                "url": "https://api.github.com/repos/dumplie/dumplie/zipball/0b6273e4659ef17b6b98633b74b2db253a7820c0",
+                "reference": "0b6273e4659ef17b6b98633b74b2db253a7820c0",
                 "shasum": ""
             },
             "require": {
@@ -854,7 +854,10 @@
                 "doctrine/orm": "^2.5",
                 "phpspec/phpspec": "^2.5",
                 "phpspec/prophecy": "^1.6",
-                "phpunit/phpunit": "^5.3"
+                "phpunit/phpunit": "^5.3",
+                "symfony/config": "^3.1",
+                "symfony/dependency-injection": "^3.1",
+                "symfony/http-kernel": "^3.1"
             },
             "suggest": {
                 "doctrine/dbal": "Allows usage of Doctrine DBAL as a storage for Metadata",
@@ -876,7 +879,7 @@
                 "MIT"
             ],
             "description": "Dumplie - simple but powerful shopping engine",
-            "time": "2016-07-13 14:18:22"
+            "time": "2016-07-19 13:41:59"
         },
         {
             "name": "incenteev/composer-parameter-handler",

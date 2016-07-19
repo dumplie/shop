@@ -15,9 +15,17 @@ class ShopBundle extends Bundle
     {
         // Register Doctrine custom mapping types
 
-        Type::addType(CartItemsType::NAME, CartItemsType::class);
-        Type::addType(OrderItemsType::NAME, OrderItemsType::class);
-        Type::addType(OrderStateType::NAME, OrderStateType::class);
-        Type::addType(PaymentStateType::NAME, PaymentStateType::class);
+        if (!Type::hasType(CartItemsType::NAME)) {
+            Type::addType(CartItemsType::NAME, CartItemsType::class);
+        }
+        if (!Type::hasType(OrderItemsType::NAME)) {
+            Type::addType(OrderItemsType::NAME, OrderItemsType::class);
+        }
+        if (!Type::hasType(OrderStateType::NAME)) {
+            Type::addType(OrderStateType::NAME, OrderStateType::class);
+        }
+        if (!Type::hasType(PaymentStateType::NAME)) {
+            Type::addType(PaymentStateType::NAME, PaymentStateType::class);
+        }
     }
 }

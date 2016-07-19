@@ -1,6 +1,6 @@
 <?php
 
-use Symfony\Component\HttpKernel\Kernel;
+use Dumplie\SharedKernel\Infrastructure\Symfony\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
@@ -28,6 +28,19 @@ class AppKernel extends Kernel
         return $bundles;
     }
 
+    public function registerDumplieExtensions()
+    {
+        $emId = 'doctrine.orm.default_entity_manager';
+        $connectionId = 'database_connection';
+
+        return [
+            new \Dumplie\SharedKernel\Application\Extension\CoreExtension(),
+            new \Dumplie\SharedKernel\Infrastructure\Doctrine\ORM\ORMExtension($emId),
+            new \Dumplie\Inventory\Infrastructure\Doctrine\DBAL\DBALExtension($connectionId),
+            new \Dumplie\Inventory\Infrastructure\Doctrine\ORM\ORMExtension($emId)
+        ];
+    }
+
     public function getRootDir()
     {
         return __DIR__;
@@ -46,22 +59,5 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
-    }
-
-    protected function getKernelParameters()
-    {
-        $reflection = new ReflectionClass(\Dumplie\SharedKernel\Application\ServiceLocator::class);
-        $dumplieRootDir = realpath(dirname($reflection->getFileName()) . '/../../');
-
-        if (!file_exists($dumplieRootDir)) {
-            throw new \RuntimeException(sprintf("Dumplie root dir path \"%s\"does not exists.", $dumplieRootDir));
-        }
-
-        return array_merge(
-            [
-                'dumplie.root_dir' => $dumplieRootDir
-            ],
-            parent::getKernelParameters()
-        );
     }
 }
