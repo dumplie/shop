@@ -1,34 +1,44 @@
 {% extends ':inventory:base.html.twig' %}
 
 {% block body %}
-    <div class="col-lg-12">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>
-                        SKU
-                    </th>
-                    <th>
-                        Price
-                    </th>
-                    <th>
-                        Available
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in inventory %}
+    <div class="row">
+        <div class="col-lg-6">
+            <h1>Products</h1>
+        </div>
+        <div class="col-lg-6 text-right">
+            <a href="{{ url('dumplie_inventory_new') }}" class="btn btn-primary">Create</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered">
+                <thead>
                     <tr>
-                        <td>{{ item.sku }}</td>
-                        <td>{{ item.price }} {{ item.currency }}</td>
-                        <td>{% if item.isAvailable %}yes{% else %}no{% endif %}</td>
+                        <th>
+                            SKU
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Available
+                        </th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <div class="container">
-            <div class="col-lg-6"></div>
-            <div class="col-lg-6 text-right"><strong>Total count: {{ totalCount }}</strong></div>
+                </thead>
+                <tbody>
+                    {% for item in inventory %}
+                        <tr>
+                            <td>{{ item.sku }}</td>
+                            <td>{{ item.price }} {{ item.currency }}</td>
+                            <td>{% if item.isAvailable %}yes{% else %}no{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="container">
+                <div class="col-lg-6"></div>
+                <div class="col-lg-6 text-right"><strong>Total count: {{ totalCount }}</strong></div>
+            </div>
         </div>
     </div>
 {% endblock %}

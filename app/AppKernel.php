@@ -30,14 +30,18 @@ class AppKernel extends Kernel
 
     public function registerDumplieExtensions()
     {
-        $emId = 'doctrine.orm.default_entity_manager';
+        $entityManagerId = 'doctrine.orm.default_entity_manager';
         $connectionId = 'database_connection';
 
         return [
             new \Dumplie\SharedKernel\Application\Extension\CoreExtension(),
-            new \Dumplie\SharedKernel\Infrastructure\Doctrine\ORM\ORMExtension($emId),
+            new \Dumplie\Inventory\Application\Extension\CoreExtension(),
+
+
+            new \Dumplie\SharedKernel\Infrastructure\Tactician\TacticianExtension(),
+            new \Dumplie\SharedKernel\Infrastructure\Doctrine\ORM\ORMExtension($entityManagerId),
             new \Dumplie\Inventory\Infrastructure\Doctrine\DBAL\DBALExtension($connectionId),
-            new \Dumplie\Inventory\Infrastructure\Doctrine\ORM\ORMExtension($emId)
+            new \Dumplie\Inventory\Infrastructure\Doctrine\ORM\ORMExtension($entityManagerId)
         ];
     }
 

@@ -1,0 +1,27 @@
+{% extends ':inventory:base.html.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-6">
+            <h2>New product</h2>
+        </div>
+        <div class="col-lg-6">
+        </div>
+    </div>
+    <div class="row">
+        {{ form_start(form) }}
+        <div class="col-lg-6">
+            {{ form_row(form.sku) }}
+            {{ form_row(form.price) }}
+            {{ form_row(form.available) }}
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="save">
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
