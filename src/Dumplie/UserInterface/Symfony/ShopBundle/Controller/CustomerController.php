@@ -1,6 +1,6 @@
 <?php
 
-namespace ShopBundle\Controller;
+namespace Dumplie\UserInterface\Symfony\ShopBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

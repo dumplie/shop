@@ -14,10 +14,10 @@
     <header>
     {% block navigation %}
         <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
-            <a class="navbar-brand" href="{{ url('dumplie_inventory_dashboard') }}">Inventory</a>
+            <a class="navbar-brand" href="{{ url('dumplie_inventory_dashboard') }}">{{ 'inventory.menu.inventory'|trans }}</a>
             <ul class="nav navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('dumplie_inventory_storage') }}">Storage</a>
+                    <a class="nav-link" href="{{ url('dumplie_inventory_storage') }}">{{ 'inventory.menu.storage'|trans }}</a>
                 </li>
             </ul>
         </nav>

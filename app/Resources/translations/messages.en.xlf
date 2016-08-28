@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="generic.yes">
+                <source>generic.yes</source>
+                <target>yes</target>
+            </trans-unit>
+            <trans-unit id="generic.no">
+                <source>generic.no</source>
+                <target>no</target>
+            </trans-unit>
+
+            <trans-unit id="inventory.dashboard.header">
+                <source>inventory.dashboard.header</source>
+                <target>Inventory Dashboard</target>
+            </trans-unit>
+
+            <trans-unit id="inventory.menu.inventory">
+                <source>inventory.menu.inventory</source>
+                <target>Inventory</target>
+            </trans-unit>
+            <trans-unit id="inventory.menu.storage">
+                <source>inventory.menu.storage</source>
+                <target>Storage</target>
+            </trans-unit>
+
+            <trans-unit id="inventory.storage.list.header">
+                <source>inventory.storage.list.header</source>
+                <target>Products</target>
+            </trans-unit>
+            <trans-unit id="inventory.storage.list.total">
+                <source>inventory.storage.list.total</source>
+                <target>Total count:</target>
+            </trans-unit>
+            <trans-unit id="inventory.storage.list.create">
+                <source>inventory.storage.list.create</source>
+                <target>Create</target>
+            </trans-unit>
+            <trans-unit id="inventory.storage.list.header.sku">
+                <source>inventory.storage.list.header.sku</source>
+                <target>SKU</target>
+            </trans-unit>
+            <trans-unit id="inventory.storage.list.header.price">
+                <source>inventory.storage.list.header.price</source>
+                <target>Price</target>
+            </trans-unit>
+            <trans-unit id="inventory.storage.list.header.available">
+                <source>inventory.storage.list.header.available</source>
+                <target>Available</target>
+            </trans-unit>
+
+            <trans-unit id="inventory.storage.add.header">
+                <source>inventory.storage.add.header</source>
+                <target>New Product</target>
+            </trans-unit>
+            <trans-unit id="inventory.storage.form.save">
+                <source>inventory.storage.form.save</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="inventory.storage.form.sku.label">
+                <source>inventory.storage.form.sku.label</source>
+                <target>SKU Code</target>
+            </trans-unit>
+            <trans-unit id="inventory.storage.form.price.label">
+                <source>inventory.storage.form.price.label</source>
+                <target>Price</target>
+            </trans-unit>
+            <trans-unit id="inventory.storage.form.available.label">
+                <source>inventory.storage.form.available.label</source>
+                <target>Available</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

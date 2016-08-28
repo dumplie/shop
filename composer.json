@@ -13,7 +13,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "": "tests/"
         }
     },
     "require": {
@@ -33,9 +33,16 @@
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0",
-        "phpunit/phpunit": "^5.4"
+        "phpunit/phpunit": "^5.4",
+        "coduo/php-humanizer": "^2.0"
     },
     "scripts": {
+        "test": [
+            "@composer install",
+            "bin/console doctrine:database:drop --env=test --force",
+            "bin/console doctrine:database:create --env=test",
+            "phpunit"
+        ],
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",

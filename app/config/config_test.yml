@@ -8,6 +8,10 @@ framework:
     profiler:
         collect: false
 
+doctrine:
+    dbal:
+        dbname:   "%database_name%-test"
+
 web_profiler:
     toolbar: false
     intercept_redirects: false

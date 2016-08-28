@@ -5,7 +5,7 @@
 {% block body %}
     <div class="row">
         <div class="col-lg-6">
-            <h2>New product</h2>
+            <h2>{{ 'inventory.storage.add.header'|trans }}</h2>
         </div>
         <div class="col-lg-6">
         </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="col-lg-6">
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="save">
+                <input type="submit" class="btn btn-primary" value="{{ 'inventory.storage.form.save'|trans }}">
             </div>
         </div>
         {{ form_end(form) }}

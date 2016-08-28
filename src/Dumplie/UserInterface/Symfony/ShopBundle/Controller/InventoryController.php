@@ -1,11 +1,11 @@
 <?php
 
-namespace ShopBundle\Controller;
+namespace Dumplie\UserInterface\Symfony\ShopBundle\Controller;
 
 use Dumplie\Inventory\Application\Command\CreateProduct;
 use Dumplie\Inventory\Application\Services as InventoryServices;
 use Dumplie\SharedKernel\Application\Services;
-use ShopBundle\Form\Inventory\ProductType;
+use Dumplie\UserInterface\Symfony\ShopBundle\Form\Inventory\ProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -39,7 +39,10 @@ class InventoryController extends Controller
      */
     public function addAction(Request $request)
     {
-        $form = $this->createForm(ProductType::class, null, ['currency' => $this->getParameter('dumplie_currency')]);
+        $form = $this->createForm(ProductType::class, null, [
+            'currency' => $this->getParameter('dumplie_currency'),
+            'inventory_query' => $this->get(InventoryServices::INVENTORY_APPLICATION_QUERY)
+        ]);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -55,7 +58,7 @@ class InventoryController extends Controller
             return $this->redirect($this->generateUrl('dumplie_inventory_storage'));
         }
 
-        return $this->render(':inventory/storage:add.html.twig', [
+        return $this->render(':inventory/storage:new.html.twig', [
             'form' => $form->createView()
         ]);
     }
