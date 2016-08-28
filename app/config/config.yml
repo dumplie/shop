@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -60,12 +60,12 @@ doctrine:
                 is_bundle: false
                 prefix: Dumplie\SharedKernel\Domain
                 alias: DumplieSharedKernel
-            DumplieCustomer:
+            InventoryCustomer:
                 type: xml
-                dir: '%dumplie.root_dir%/Customer/Infrastructure/Doctrine/ORM/Resources/Mapping/Domain'
+                dir: '%dumplie.root_dir%/Inventory/Infrastructure/Doctrine/ORM/Resources/Mapping/Domain'
                 is_bundle: false
-                prefix: Dumplie\Customer\Domain
-                alias: DumplieCustomerKernel
+                prefix: Dumplie\Inventory\Domain
+                alias: DumplieInventory
 
 # Swiftmailer Configuration
 swiftmailer:

@@ -1,5 +1,10 @@
-shop:
-    resource: "@ShopBundle/Controller/"
+customer:
+    resource: "@ShopBundle/Controller/CustomerController.php"
+    type:     annotation
+    prefix:   /
+
+inventory:
+    resource: "@ShopBundle/Controller/InventoryController.php"
     type:     annotation
     prefix:   /
 

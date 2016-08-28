@@ -1,0 +1,44 @@
+{% extends ':inventory:base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-6">
+            <h1>{{ 'inventory.storage.list.header'|trans }}</h1>
+        </div>
+        <div class="col-lg-6 text-right">
+            <a id="inventory-storage-create" href="{{ url('dumplie_inventory_new') }}" class="btn btn-primary">{{ 'inventory.storage.list.create'|trans }}</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            {{ 'inventory.storage.list.header.sku'|trans }}
+                        </th>
+                        <th>
+                            {{ 'inventory.storage.list.header.price'|trans }}
+                        </th>
+                        <th>
+                            {{ 'inventory.storage.list.header.available'|trans }}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in inventory %}
+                        <tr>
+                            <td>{{ item.sku }}</td>
+                            <td>{{ item.price }} {{ item.currency }}</td>
+                            <td>{% if item.isAvailable %}{{ 'generic.yes'|trans }}{% else %}{{ 'generic.no'|trans }}{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="container">
+                <div class="col-lg-6"></div>
+                <div class="col-lg-6 text-right"><strong>{{ 'inventory.storage.list.total'|trans }} {{ totalCount }}</strong></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
