@@ -1,0 +1,61 @@
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
+
+module OS
+    def OS.windows?
+        (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
+    end
+
+    def OS.mac?
+        (/darwin/ =~ RUBY_PLATFORM) != nil
+    end
+
+    def OS.unix?
+        !OS.windows?
+    end
+
+    def OS.linux?
+        OS.unix? and not OS.mac?
+    end
+end
+
+Vagrant.configure(2) do |config|
+    config.vm.box = "ubuntu/trusty64"
+    config.vm.network :private_network, ip: "10.0.0.200"
+    config.ssh.forward_agent = true
+
+    config.vm.provider :virtualbox do |v|
+        v.gui = false
+        v.name = "dumplie"
+        v.memory = 1024
+    end
+
+    # disable synchronization of vagrant folder
+    config.vm.synced_folder ".", "/vagrant", disabled: true
+
+    if OS.mac?
+        puts "Vagrant launched from OSX"
+
+        config.vm.synced_folder "../../", "/var/www/dumplie/shop", id: "dumplie", type: "nfs"
+        # config.vm.synced_folder "../../../dumplie", "/var/lib/dumplie", id: "dumplie-core", type: "nfs"
+    elsif OS.linux?
+        puts "Vagrant launched from Linux"
+
+        config.vm.synced_folder "../../", "/var/www/dumplie/shop", id: "dumplie", mount_options: ["rw", "tcp", "nolock", "noacl", "async"], type: "nfs"
+        # config.vm.synced_folder "../../../dumplie", "/var/lib/dumplie", id: "dumplie", mount_options: ["rw", "tcp", "nolock", "noacl", "async"], type: "nfs"
+    elsif OS.windows?
+        puts "Vagrant launched from Window"
+
+        config.vm.synced_folder "../../", "/var/www/dumplie/shop", type: "smb", mount_options: ["mfsymlinks,dir_mode=0775,file_mode=0775"]
+        # config.vm.synced_folder "../../../dumplie", "/var/lib/dumplie", type: "smb", mount_options: ["mfsymlinks,dir_mode=0775,file_mode=0775"]
+    end
+
+    # COMMENT FOLLOWING LINE FOR WEB-INFRASTRUCTURE DEVELOPMENT
+    config.vm.provision :shell, path: "./../ansible/vagrant.sh", args: ["master"]
+
+    # UNCOMMENT FOLLOWING LINES FOR NFRASTRUCTURE DEVELOPMENT
+    # config.vm.provision "ansible" do |ansible|
+    #     ansible.playbook = "../infrastructure/ansible/dumplie.vagrant.provision.yml"
+    #     ansible.inventory_path = "../ansible/inventory/hosts"
+    #     ansible.limit = "vagrant"
+    # end
+end

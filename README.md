@@ -1,4 +1,7 @@
-shop
-====
+Dumplie Symfony Shop
+====================
 
-A Symfony project created on July 17, 2016, 12:44 pm.
+### Vagrant 
+
+In order to launch you Vagrant machine for dumplie shop please follow
+[README](etc/vagrant/README.md) instructions.

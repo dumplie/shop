@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f9eff37009e5440687fd4ad32fe66780",
-    "content-hash": "e93b7b88c61072b0e9458f9872ad492e",
+    "hash": "2200bc13fdbf69cfb183663f25460bb2",
+    "content-hash": "2d3570ba7e2559e6d1751fe79894af92",
     "packages": [
         {
             "name": "coduo/php-to-string",
