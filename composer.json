@@ -41,6 +41,7 @@
             "@composer install",
             "bin/console doctrine:database:drop --env=test --force --if-exists",
             "bin/console doctrine:database:create --env=test",
+            "bin/console dumplie:metadata:schema:alter --force --env=test",
             "phpunit"
         ],
         "post-install-cmd": [
@@ -67,8 +68,17 @@
         "symfony-web-dir": "web",
         "symfony-tests-dir": "tests",
         "symfony-assets-install": "relative",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        }
+        "incenteev-parameters": [
+            {
+                "file": "app/config/parameters.yml",
+                "env-map": {
+                    "database_host": "DUMPLIE_DB_HOST",
+                    "database_name": "DUMPLIE_DB_NAME",
+                    "database_password": "DUMPLIE_DB_PASS",
+                    "database_user": "DUMPLIE_DB_USER",
+                    "database_driver": "DUMPLIE_DB_DRIVER"
+                }
+            }
+        ]
     }
 }

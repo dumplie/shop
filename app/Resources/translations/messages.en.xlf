@@ -49,6 +49,10 @@
                 <source>inventory.storage.list.header.available</source>
                 <target>Available</target>
             </trans-unit>
+            <trans-unit id="inventory.storage.list.header.visible">
+                <source>inventory.storage.list.header.visible</source>
+                <target>Visible</target>
+            </trans-unit>
 
             <trans-unit id="inventory.storage.add.header">
                 <source>inventory.storage.add.header</source>

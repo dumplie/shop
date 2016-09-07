@@ -40,6 +40,6 @@ class AddProductPage extends BasePage
             return new ProductListPage($this->client, $this);
         }
 
-        return $this;
+        throw new \RuntimeException(sprintf("Unexpected status code: %d", $status));
     }
 }

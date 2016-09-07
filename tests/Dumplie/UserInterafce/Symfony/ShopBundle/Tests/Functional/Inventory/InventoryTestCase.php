@@ -56,14 +56,17 @@ class InventoryTestCase extends WebTestCase
      */
     public function query() : DbalInventoryQuery
     {
-        return new DbalInventoryQuery($this->getContainer()->get('database_connection'));
-
+        return new DbalInventoryQuery(
+            $this->getContainer()->get('database_connection'),
+            $this->getContainer()->get(Services::KERNEL_METADATA_ACCESS_REGISTRY)
+        );
     }
 
     public function tearDown()
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
         $this->dropSchema($em);
+
         parent::tearDown();
     }
 }

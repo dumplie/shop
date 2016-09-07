@@ -2,6 +2,7 @@
 
 use Dumplie\SharedKernel\Infrastructure\Symfony\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Dumplie\UserInterface\Symfony\MetadataBundle\DependencyInjection\MetadataExtension;
 
 class AppKernel extends Kernel
 {
@@ -15,6 +16,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new Dumplie\UserInterface\Symfony\MetadataBundle\MetadataBundle(),
             new Dumplie\UserInterface\Symfony\ShopBundle\ShopBundle(),
         ];
 
@@ -34,14 +36,13 @@ class AppKernel extends Kernel
         $connectionId = 'database_connection';
 
         return [
-            new \Dumplie\SharedKernel\Application\Extension\CoreExtension(),
-            new \Dumplie\Inventory\Application\Extension\CoreExtension(),
-
-
+            new \Dumplie\SharedKernel\Application\Extension\CoreExtension(MetadataExtension::STORAGE_SERVICE),
             new \Dumplie\SharedKernel\Infrastructure\Tactician\TacticianExtension(),
-            new \Dumplie\SharedKernel\Infrastructure\Doctrine\ORM\ORMExtension($entityManagerId),
-            new \Dumplie\Inventory\Infrastructure\Doctrine\DBAL\DBALExtension($connectionId),
-            new \Dumplie\Inventory\Infrastructure\Doctrine\ORM\ORMExtension($entityManagerId)
+            new \Dumplie\SharedKernel\Infrastructure\Doctrine\DoctrineExtension($entityManagerId),
+            new \Dumplie\SharedKernel\Infrastructure\Twig\TwigExtension('twig'),
+
+            new \Dumplie\Inventory\Application\Extension\CoreExtension(),
+            new \Dumplie\Inventory\Infrastructure\Doctrine\DoctrineExtension($entityManagerId, $connectionId),
         ];
     }
 

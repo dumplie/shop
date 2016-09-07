@@ -26,8 +26,7 @@ framework:
     trusted_proxies: ~
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
-        handler_id:  session.handler.native_file
-        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+        handler_id:  null
     fragments:       ~
     http_method_override: true
     assets: ~
@@ -40,7 +39,7 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   pdo_mysql
+        driver:   "%database_driver%"
         host:     "%database_host%"
         port:     "%database_port%"
         dbname:   "%database_name%"
@@ -66,6 +65,11 @@ doctrine:
                 is_bundle: false
                 prefix: Dumplie\Inventory\Domain
                 alias: DumplieInventory
+
+metadata:
+  storage:
+    doctrine:
+      connection: "database_connection"
 
 # Swiftmailer Configuration
 swiftmailer:

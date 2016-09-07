@@ -4,7 +4,9 @@ namespace Dumplie\UserInterface\Symfony\ShopBundle\Controller;
 
 use Dumplie\Inventory\Application\Command\CreateProduct;
 use Dumplie\Inventory\Application\Services as InventoryServices;
+use Dumplie\Inventory\UserInterface\View\StorageList;
 use Dumplie\SharedKernel\Application\Services;
+use Dumplie\SharedKernel\Infrastructure\Twig\TwigExtension;
 use Dumplie\UserInterface\Symfony\ShopBundle\Form\Inventory\ProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -28,7 +30,7 @@ class InventoryController extends Controller
     public function storageAction()
     {
         return $this->render(':inventory/storage:index.html.twig', [
-            'inventory' => $this->get(InventoryServices::INVENTORY_APPLICATION_QUERY)->findAll(20),
+            'inventory' => new StorageList($this->get(InventoryServices::INVENTORY_APPLICATION_QUERY)->findAll(20)),
             'totalCount' => $this->get(InventoryServices::INVENTORY_APPLICATION_QUERY)->count(),
         ]);
     }
