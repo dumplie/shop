@@ -39,7 +39,6 @@ class AppKernel extends Kernel
             new \Dumplie\SharedKernel\Application\Extension\CoreExtension(MetadataExtension::STORAGE_SERVICE),
             new \Dumplie\SharedKernel\Infrastructure\Tactician\TacticianExtension(),
             new \Dumplie\SharedKernel\Infrastructure\Doctrine\DoctrineExtension($entityManagerId),
-            new \Dumplie\SharedKernel\Infrastructure\Twig\TwigExtension('twig'),
 
             new \Dumplie\Inventory\Application\Extension\CoreExtension(),
             new \Dumplie\Inventory\Infrastructure\Doctrine\DoctrineExtension($entityManagerId, $connectionId),

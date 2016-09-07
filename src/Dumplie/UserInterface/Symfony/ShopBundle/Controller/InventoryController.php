@@ -30,7 +30,7 @@ class InventoryController extends Controller
     public function storageAction()
     {
         return $this->render(':inventory/storage:index.html.twig', [
-            'inventory' => new StorageList($this->get(InventoryServices::INVENTORY_APPLICATION_QUERY)->findAll(20)),
+            'products' => $this->get(InventoryServices::INVENTORY_APPLICATION_QUERY)->findAll(20),
             'totalCount' => $this->get(InventoryServices::INVENTORY_APPLICATION_QUERY)->count(),
         ]);
     }
