@@ -3,15 +3,16 @@
 namespace Dumplie\UserInterface\Symfony\ShopBundle\Controller;
 
 use Dumplie\Inventory\Application\Command\CreateProduct;
+use Dumplie\Inventory\Application\Extension\Metadata;
 use Dumplie\Inventory\Application\Services as InventoryServices;
-use Dumplie\Inventory\UserInterface\View\StorageList;
 use Dumplie\SharedKernel\Application\Services;
-use Dumplie\SharedKernel\Infrastructure\Twig\TwigExtension;
+use Dumplie\Metadata\Infrastructure\Symfony\Form\Type\MetadataType;
 use Dumplie\UserInterface\Symfony\ShopBundle\Form\Inventory\ProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class InventoryController extends Controller
 {
@@ -61,6 +62,39 @@ class InventoryController extends Controller
         }
 
         return $this->render(':inventory/storage:new.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/inventory/storage/metadata/{sku}", name="dumplie_inventory_metadata")
+     * @Method({"GET", "POST"})
+     */
+    public function metadataAction(Request $request, string $sku)
+    {
+        $mao = $this->get(Services::KERNEL_METADATA_ACCESS_REGISTRY)->getMAO(Metadata::TYPE_NAME);
+        $metadata = $mao->findBy([Metadata::FIELD_SKU => $sku]);
+
+        if (is_null($metadata)) {
+            throw new NotFoundHttpException();
+        }
+
+        $form = $this->createForm(MetadataType::class, $metadata, [
+            'mao' => $mao,
+            'type_options' => [
+                Metadata::FIELD_SKU => ['disabled' => true, 'label' => 'inventory.storage.metadata.form.sku.label'],
+                Metadata::FIELD_VISIBLE => ['label' => 'inventory.storage.metadata.form.visible.label']
+            ]
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $mao->save($metadata);
+
+            return $this->redirect($this->generateUrl('dumplie_inventory_storage'));
+        }
+
+        return $this->render(':inventory/storage:metadata.html.twig', [
             'form' => $form->createView()
         ]);
     }

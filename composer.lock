@@ -340,16 +340,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.5.4",
+            "version": "v2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "abbdfd1cff43a7b99d027af3be709bc8fc7d4769"
+                "reference": "9f8c05cd5225a320d56d4bfdb4772f10d045a0c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/abbdfd1cff43a7b99d027af3be709bc8fc7d4769",
-                "reference": "abbdfd1cff43a7b99d027af3be709bc8fc7d4769",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/9f8c05cd5225a320d56d4bfdb4772f10d045a0c9",
+                "reference": "9f8c05cd5225a320d56d4bfdb4772f10d045a0c9",
                 "shasum": ""
             },
             "require": {
@@ -358,7 +358,7 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "4.*",
-                "symfony/console": "2.*"
+                "symfony/console": "2.*||^3.0"
             },
             "suggest": {
                 "symfony/console": "For helpful console commands such as SQL execution and import of files."
@@ -407,7 +407,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2016-01-05 22:11:12"
+            "time": "2016-09-09 19:13:33"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -755,16 +755,16 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "v2.5.4",
+            "version": "v2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "bc4ddbfb0114cb33438cc811c9a740d8aa304aab"
+                "reference": "73e4be7c7b3ba26f96b781a40b33feba4dfa6d45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/bc4ddbfb0114cb33438cc811c9a740d8aa304aab",
-                "reference": "bc4ddbfb0114cb33438cc811c9a740d8aa304aab",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/73e4be7c7b3ba26f96b781a40b33feba4dfa6d45",
+                "reference": "73e4be7c7b3ba26f96b781a40b33feba4dfa6d45",
                 "shasum": ""
             },
             "require": {
@@ -827,7 +827,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2016-01-05 21:34:58"
+            "time": "2016-09-10 18:51:13"
         },
         {
             "name": "dumplie/dumplie",
@@ -835,12 +835,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dumplie/dumplie.git",
-                "reference": "3df766dd26f888dab3023da757cd978ae825bd1f"
+                "reference": "7e75727d22e789c756b11227b338ed007103e70b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dumplie/dumplie/zipball/3df766dd26f888dab3023da757cd978ae825bd1f",
-                "reference": "3df766dd26f888dab3023da757cd978ae825bd1f",
+                "url": "https://api.github.com/repos/dumplie/dumplie/zipball/7e75727d22e789c756b11227b338ed007103e70b",
+                "reference": "7e75727d22e789c756b11227b338ed007103e70b",
                 "shasum": ""
             },
             "require": {
@@ -858,7 +858,10 @@
                 "phpunit/phpunit": "^5.3",
                 "symfony/config": "^3.1",
                 "symfony/dependency-injection": "^3.1",
+                "symfony/form": "^3.1",
                 "symfony/http-kernel": "^3.1",
+                "symfony/options-resolver": "^3.1",
+                "symfony/validator": "^3.1",
                 "twig/twig": "^1.23"
             },
             "suggest": {
@@ -881,7 +884,7 @@
                 "MIT"
             ],
             "description": "Dumplie - simple but powerful shopping engine",
-            "time": "2016-09-07 20:43:56"
+            "time": "2016-09-12 19:22:49"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1327,16 +1330,16 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v5.0.9",
+            "version": "v5.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "e5e0d8d06b07864b2752bd865537b0817edf4c5a"
+                "reference": "b6dcd04595e4db95ead22ddea58c397864e00c32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/e5e0d8d06b07864b2752bd865537b0817edf4c5a",
-                "reference": "e5e0d8d06b07864b2752bd865537b0817edf4c5a",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/b6dcd04595e4db95ead22ddea58c397864e00c32",
+                "reference": "b6dcd04595e4db95ead22ddea58c397864e00c32",
                 "shasum": ""
             },
             "require": {
@@ -1375,7 +1378,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2016-09-06 01:05:01"
+            "time": "2016-09-14 20:25:12"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -2256,16 +2259,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.5.2",
+            "version": "1.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "da8529775f14f4fdae33f916eb0cf65f6afbddbc"
+                "reference": "ea74994a3dc7f8d2f65a06009348f2d63c81e61f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/da8529775f14f4fdae33f916eb0cf65f6afbddbc",
-                "reference": "da8529775f14f4fdae33f916eb0cf65f6afbddbc",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/ea74994a3dc7f8d2f65a06009348f2d63c81e61f",
+                "reference": "ea74994a3dc7f8d2f65a06009348f2d63c81e61f",
                 "shasum": ""
             },
             "require": {
@@ -2294,7 +2297,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2016-09-06 16:07:05"
+            "time": "2016-09-16 13:37:59"
         },
         {
             "name": "phpdocumentor/reflection-common",
