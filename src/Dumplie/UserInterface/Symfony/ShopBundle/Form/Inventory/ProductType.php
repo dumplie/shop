@@ -5,6 +5,7 @@ declare (strict_types = 1);
 namespace Dumplie\UserInterface\Symfony\ShopBundle\Form\Inventory;
 
 use Dumplie\Inventory\Application\Query\InventoryQuery;
+use Dumplie\SharedKernel\Domain\Money\Price;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -34,7 +35,8 @@ final class ProductType extends AbstractType
         ]);
         $builder->add('price', MoneyType::class, [
             'label' => 'inventory.storage.form.price.label',
-            'currency' => $options['currency']
+            'currency' => $options['currency'],
+            'divisor' => Price::DEFAULT_PRECISION,
         ]);
         $builder->add('available', CheckboxType::class, [
             'label' => 'inventory.storage.form.available.label'

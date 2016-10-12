@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace Dumplie\UserInterface\Symfony\ShopBundle\Controller;
 
 use Dumplie\Inventory\Application\Command\CreateProduct;
@@ -12,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class InventoryController extends Controller
@@ -20,7 +23,7 @@ class InventoryController extends Controller
     /**
      * @Route("/inventory", name="dumplie_inventory_dashboard")
      */
-    public function dashboardAction()
+    public function dashboardAction() : Response
     {
         return $this->render('inventory/dashboard.html.twig', []);
     }
@@ -28,7 +31,7 @@ class InventoryController extends Controller
     /**
      * @Route("/inventory/storage", name="dumplie_inventory_storage")
      */
-    public function storageAction()
+    public function storageAction() : Response
     {
         return $this->render(':inventory/storage:index.html.twig', [
             'products' => $this->get(InventoryServices::INVENTORY_APPLICATION_QUERY)->findAll(20),
@@ -40,7 +43,7 @@ class InventoryController extends Controller
      * @Route("/inventory/storage/new", name="dumplie_inventory_new")
      * @Method({"GET", "POST"})
      */
-    public function addAction(Request $request)
+    public function addAction(Request $request) : Response
     {
         $form = $this->createForm(ProductType::class, null, [
             'currency' => $this->getParameter('dumplie_currency'),
@@ -51,14 +54,14 @@ class InventoryController extends Controller
         if ($form->isValid()) {
             $command = new CreateProduct(
                 $form->get('sku')->getData(),
-                $form->get('price')->getData(),
+                (int) $form->get('price')->getData(),
                 $this->getParameter('dumplie_currency'),
                 $form->get('available')->getData()
             );
 
             $this->get(Services::KERNEL_COMMAND_BUS)->handle($command);
 
-            return $this->redirect($this->generateUrl('dumplie_inventory_storage'));
+            return $this->redirect($this->generateUrl('dumplie_inventory_metadata', ['sku' => $command->sku()]));
         }
 
         return $this->render(':inventory/storage:new.html.twig', [
@@ -70,7 +73,7 @@ class InventoryController extends Controller
      * @Route("/inventory/storage/metadata/{sku}", name="dumplie_inventory_metadata")
      * @Method({"GET", "POST"})
      */
-    public function metadataAction(Request $request, string $sku)
+    public function metadataAction(Request $request, string $sku) : Response
     {
         $mao = $this->get(Services::KERNEL_METADATA_ACCESS_REGISTRY)->getMAO(Metadata::TYPE_NAME);
         $metadata = $mao->findBy([Metadata::FIELD_SKU => $sku]);
@@ -83,6 +86,7 @@ class InventoryController extends Controller
             'mao' => $mao,
             'type_options' => [
                 Metadata::FIELD_SKU => ['disabled' => true, 'label' => 'inventory.storage.metadata.form.sku.label'],
+                Metadata::FIELD_NAME => ['label' => 'inventory.storage.metadata.form.name.label'],
                 Metadata::FIELD_VISIBLE => ['label' => 'inventory.storage.metadata.form.visible.label']
             ]
         ]);

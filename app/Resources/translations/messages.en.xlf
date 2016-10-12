@@ -79,6 +79,10 @@
                 <source>inventory.storage.metadata.header</source>
                 <target>Product Metadata</target>
             </trans-unit>
+            <trans-unit id="inventory.storage.metadata.form.name.label">
+                <source>inventory.storage.metadata.form.name.label</source>
+                <target>Name</target>
+            </trans-unit>
             <trans-unit id="inventory.storage.metadata.form.sku.label">
                 <source>inventory.storage.metadata.form.sku.label</source>
                 <target>SKU</target>

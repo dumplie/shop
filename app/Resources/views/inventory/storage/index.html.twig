@@ -35,7 +35,7 @@
                 {% for product in products %}
                         <tr>
                             <td>{{ product.sku }}</td>
-                            <td>{{ product.price }} {{ product.currency }}</td>
+                            <td>{{ product.price|number_format(2, '.', ',') }} {{ product.currency }}</td>
                             <td>{% if product.isAvailable %}{{ 'generic.yes'|trans }}{% else %}{{ 'generic.no'|trans }}{% endif %}</td>
                             <td>{% if product.metadata.visible %}{{ 'generic.yes'|trans }}{% else %}{{ 'generic.no'|trans }}{% endif %}</td>
                             <td><a href="{{ url('dumplie_inventory_metadata', {sku: product.metadata.sku}) }}">Edit Metadata</a></td>

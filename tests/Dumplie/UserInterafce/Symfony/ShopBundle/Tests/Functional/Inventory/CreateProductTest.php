@@ -14,7 +14,7 @@ class CreateProductTest extends InventoryTestCase
             ->open()
             ->fillForm("DUMPLIE_SKU", 100.00)
             ->pressSaveButton()
-            ->shouldBeRedirectedTo('/inventory/storage');
+            ->shouldBeRedirectedTo('/inventory/storage/new');
 
         $this->assertTrue($this->query()->skuExists("DUMPLIE_SKU"));
     }

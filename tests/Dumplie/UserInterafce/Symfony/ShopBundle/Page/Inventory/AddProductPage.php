@@ -28,16 +28,16 @@ class AddProductPage extends BasePage
     }
 
     /**
-     * @return $this|ProductListPage
+     * @return AddProductPage
      */
-    public function pressSaveButton() : ProductListPage
+    public function pressSaveButton() : AddProductPage
     {
         $this->client->submit($this->form);
 
         $status = $this->client->getResponse()->getStatusCode();
         if ($status === 302) {
             $this->client->followRedirect();
-            return new ProductListPage($this->client, $this);
+            return new AddProductPage($this->client, $this);
         }
 
         throw new \RuntimeException(sprintf("Unexpected status code: %d", $status));
